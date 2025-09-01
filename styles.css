@@ -259,181 +259,6 @@
             letter-spacing: 1px;
         }
 
-        /*
-        =====================================================
-        BULLES ANIMÉES FLOTTANTES - Section Hero
-        =====================================================
-        Bulles avec images qui flottent de manière élégante
-        en arrière-plan de la section hero
-        =====================================================
-        */
-        .floating-bubbles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            box-shadow: 0 5px 20px rgba(0, 35, 149, 0.08);
-            overflow: hidden;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            filter: blur(0.5px);
-        }
-
-        .bubble img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        /* Tailles et positions des bulles - Répartition équilibrée */
-        
-        /* Bulle 1 - Haut gauche */
-        .bubble-1 {
-            width: 80px;
-            height: 80px;
-            top: 10%;
-            left: 8%;
-            animation: float1 28s infinite ease-in-out;
-        }
-
-        /* Bulle 2 - Haut droite */
-        .bubble-2 {
-            width: 70px;
-            height: 70px;
-            top: 15%;
-            left: 88%;
-            animation: float2 32s infinite ease-in-out;
-        }
-
-        /* Bulle 3 - Milieu */
-        .bubble-3 {
-            width: 85px;
-            height: 85px;
-            top: 45%;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: float3 30s infinite ease-in-out;
-        }
-
-        /* Bulle 4 - Bas gauche */
-        .bubble-4 {
-            width: 75px;
-            height: 75px;
-            top: 80%;
-            left: 12%;
-            animation: float4 35s infinite ease-in-out;
-        }
-
-        /* Bulle 5 - Bas droite */
-        .bubble-5 {
-            width: 78px;
-            height: 78px;
-            top: 75%;
-            left: 85%;
-            animation: float5 29s infinite ease-in-out;
-        }
-
-        /* Animations de flottaison - Mouvements subtils et discrets */
-        @keyframes float1 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(15px, -10px) rotate(1deg); }
-            50% { transform: translate(-8px, 12px) rotate(-0.5deg); }
-            75% { transform: translate(12px, -6px) rotate(0.5deg); }
-        }
-
-        @keyframes float2 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(-12px, -8px) rotate(-1deg); }
-            66% { transform: translate(10px, 15px) rotate(0.5deg); }
-        }
-
-        @keyframes float3 {
-            0%, 100% { transform: translateX(-50%) translate(0, 0) rotate(0deg); }
-            20% { transform: translateX(-50%) translate(10px, 8px) rotate(0.5deg); }
-            40% { transform: translateX(-50%) translate(-8px, -12px) rotate(-0.5deg); }
-            60% { transform: translateX(-50%) translate(12px, 4px) rotate(1deg); }
-            80% { transform: translateX(-50%) translate(-6px, 10px) rotate(-0.5deg); }
-        }
-
-        @keyframes float4 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            30% { transform: translate(-10px, -8px) rotate(-0.5deg); }
-            60% { transform: translate(15px, -12px) rotate(1deg); }
-        }
-
-        @keyframes float5 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(-8px, 12px) rotate(0.5deg); }
-            50% { transform: translate(12px, -10px) rotate(-1deg); }
-            75% { transform: translate(-15px, -4px) rotate(0.5deg); }
-        }
-
-        /* Effet de parallax subtil au scroll */
-        .bubble.parallax-slow {
-            transform: translateZ(0);
-        }
-
-        /* Adaptations responsive pour les bulles */
-        
-        /* Très petits mobiles (max 400px) */
-        @media (max-width: 400px) {
-            .bubble-1 { width: 35px; height: 35px; }
-            .bubble-2 { width: 30px; height: 30px; }
-            .bubble-3 { width: 40px; height: 40px; }
-            .bubble-4 { width: 32px; height: 32px; }
-            .bubble-5 { width: 38px; height: 38px; }
-            
-            /* Réduction des mouvements sur très petits écrans */
-            .floating-bubbles {
-                opacity: 0.8;
-            }
-        }
-
-        /* Mobiles standard (401px - 576px) */
-        @media (min-width: 401px) and (max-width: 576px) {
-            .bubble-1 { width: 45px; height: 45px; }
-            .bubble-2 { width: 40px; height: 40px; }
-            .bubble-3 { width: 50px; height: 50px; }
-            .bubble-4 { width: 42px; height: 42px; }
-            .bubble-5 { width: 48px; height: 48px; }
-        }
-
-        /* Grandes mobiles/Phablets (577px - 768px) */
-        @media (min-width: 577px) and (max-width: 768px) {
-            .bubble-1 { width: 55px; height: 55px; }
-            .bubble-2 { width: 45px; height: 45px; }
-            .bubble-3 { width: 60px; height: 60px; }
-            .bubble-4 { width: 50px; height: 50px; }
-            .bubble-5 { width: 58px; height: 58px; }
-        }
-
-        /* Tablettes (769px - 992px) */
-        @media (min-width: 769px) and (max-width: 992px) {
-            .bubble-1 { width: 65px; height: 65px; }
-            .bubble-2 { width: 55px; height: 55px; }
-            .bubble-3 { width: 70px; height: 70px; }
-            .bubble-4 { width: 60px; height: 60px; }
-            .bubble-5 { width: 68px; height: 68px; }
-        }
-
-        /* Petits desktop (993px - 1200px) */
-        @media (min-width: 993px) and (max-width: 1200px) {
-            .bubble-1 { width: 75px; height: 75px; }
-            .bubble-2 { width: 65px; height: 65px; }
-            .bubble-3 { width: 80px; height: 80px; }
-            .bubble-4 { width: 70px; height: 70px; }
-            .bubble-5 { width: 78px; height: 78px; }
-        }
 
         /*
         =====================================================
@@ -541,8 +366,8 @@
         }
 
         .avatar {
-            width: 56px;
-            height: 56px;
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid var(--blanc);
@@ -552,7 +377,7 @@
         }
 
         .avatar + .avatar {
-            margin-left: -14px; /* chevauchement ajusté pour la nouvelle taille */
+            margin-left: -16px; /* chevauchement ajusté pour la nouvelle taille */
         }
 
         .avatar:hover {
@@ -565,8 +390,23 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top; /* Centré vers le haut */
+            object-position: center center; /* Centré au milieu */
             display: block;
+        }
+
+        /* Ajustement spécifique pour HOME1.jpg */
+        .avatar img[src*="HOME1.jpg"] {
+            object-position: center top; /* Centré vers le haut */
+        }
+
+        /* Ajustement spécifique pour HOME2.jpg */
+        .avatar img[src*="HOME2.jpg"] {
+            object-position: center 40%; /* Légèrement vers le bas du centre */
+        }
+
+        /* Ajustement spécifique pour HOME3.jpg */
+        .avatar img[src*="HOME3.jpg"] {
+            object-position: center top; /* Centré vers le haut */
         }
 
         .headline {
@@ -1437,6 +1277,7 @@
         .footer-section a:hover {
             color: var(--blanc);
         }
+
 
         /* Modal */
         .modal {
