@@ -224,6 +224,23 @@
             color: var(--blanc);
         }
 
+        .experts-image {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .experts-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .experts-img:hover {
+            transform: scale(1.05);
+        }
+
         .hero-image {
             background: var(--blanc);
             padding: 3rem;
@@ -514,6 +531,24 @@
         .expertise-card p {
             color: var(--gris);
             line-height: 1.8;
+        }
+
+        .expertise-experts {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .expertise-experts-img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .expertise-experts-img:hover {
+            transform: scale(1.02);
         }
 
         /*
