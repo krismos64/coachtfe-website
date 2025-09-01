@@ -224,22 +224,6 @@
             color: var(--blanc);
         }
 
-        .experts-image {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .experts-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .experts-img:hover {
-            transform: scale(1.05);
-        }
 
         .hero-image {
             background: var(--blanc);
@@ -533,23 +517,70 @@
             line-height: 1.8;
         }
 
-        .expertise-experts {
-            margin-top: 3rem;
-            text-align: center;
+        /*
+        =====================================================
+        SOCIAL PROOF - Avatars chevauchés avec preuve sociale
+        =====================================================
+        */
+        .social-proof {
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            justify-content: center;
         }
 
-        .expertise-experts-img {
-            max-width: 300px;
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
+        .expertise-social-proof {
+            margin-top: 3rem;
+        }
+
+        /* Avatars chevauchés */
+        .avatars {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--blanc);
+            box-shadow: 0 2px 6px rgba(0, 35, 149, 0.15);
+            background: var(--gris-clair);
             transition: transform 0.3s ease;
         }
 
-        .expertise-experts-img:hover {
-            transform: scale(1.02);
+        .avatar + .avatar {
+            margin-left: -12px; /* chevauchement */
         }
+
+        .avatar:hover {
+            transform: scale(1.1);
+            z-index: 10;
+            position: relative;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .headline {
+            font-size: 1.1rem;
+            line-height: 1.25;
+            font-weight: 600;
+            color: var(--noir);
+            letter-spacing: 0.2px;
+            margin: 0;
+        }
+
+        .headline .accent {
+            color: var(--rouge-france);
+        }
+
 
         /*
         =====================================================

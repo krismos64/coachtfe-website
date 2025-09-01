@@ -336,3 +336,133 @@ window.BubbleAnimations = {
     addPulse: addPulseEffect,
     config: BUBBLE_CONFIG
 };
+
+/*
+=====================================================
+SOCIAL PROOF AVATARS - Gestion des avatars chevauchés
+=====================================================
+Fonctionnalité optionnelle pour changer dynamiquement 
+les images des avatars via des URLs
+=====================================================
+*/
+
+/**
+ * Configuration et gestion des avatars de preuve sociale
+ */
+function initSocialProofAvatars() {
+    // Configuration des bindings avatars (si des inputs existent pour les modifier)
+    const avatarBindings = [
+        {input: 'avatar-input-1', img: 'avatar-1'},
+        {input: 'avatar-input-2', img: 'avatar-2'},
+        {input: 'avatar-input-3', img: 'avatar-3'},
+        {input: 'avatar-input-4', img: 'avatar-4'},
+        {input: 'avatar-input-5', img: 'avatar-5'}
+    ];
+
+    // Fonction pour mettre à jour une image d'avatar
+    function updateAvatar(inputId, imgId) {
+        const input = document.getElementById(inputId);
+        const img = document.querySelector(`[data-avatar-id="${imgId}"]`);
+        
+        if (!input || !img) return;
+
+        input.addEventListener('change', () => {
+            if (input.value.trim()) {
+                img.src = input.value.trim();
+            }
+        });
+
+        // Validation par la touche Entrée
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && input.value.trim()) {
+                e.preventDefault();
+                img.src = input.value.trim();
+                input.blur();
+            }
+        });
+    }
+
+    // Application des bindings si les éléments existent
+    avatarBindings.forEach(binding => {
+        updateAvatar(binding.input, binding.img);
+    });
+
+    // Animation d'apparition progressive des avatars
+    const avatars = document.querySelectorAll('.avatar');
+    avatars.forEach((avatar, index) => {
+        // Délai progressif pour l'apparition
+        setTimeout(() => {
+            avatar.style.opacity = '1';
+            avatar.style.transform = 'scale(1)';
+        }, index * 150);
+    });
+
+    console.log('Avatars de preuve sociale initialisés');
+}
+
+/**
+ * Animation au scroll pour les avatars
+ */
+function setupAvatarScrollAnimation() {
+    const socialProofElements = document.querySelectorAll('.social-proof');
+    
+    // Observer pour l'intersection avec le viewport
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const avatars = entry.target.querySelectorAll('.avatar');
+                avatars.forEach((avatar, index) => {
+                    setTimeout(() => {
+                        avatar.classList.add('animate-in');
+                    }, index * 100);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+
+    socialProofElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+/**
+ * Effet de pulsation sur les avatars au survol de la section
+ */
+function setupAvatarHoverEffects() {
+    const socialProofElements = document.querySelectorAll('.social-proof');
+    
+    socialProofElements.forEach(section => {
+        section.addEventListener('mouseenter', () => {
+            const avatars = section.querySelectorAll('.avatar');
+            avatars.forEach((avatar, index) => {
+                setTimeout(() => {
+                    avatar.style.transform = 'scale(1.05)';
+                }, index * 50);
+            });
+        });
+
+        section.addEventListener('mouseleave', () => {
+            const avatars = section.querySelectorAll('.avatar');
+            avatars.forEach(avatar => {
+                avatar.style.transform = 'scale(1)';
+            });
+        });
+    });
+}
+
+// Initialisation des avatars de preuve sociale
+document.addEventListener('DOMContentLoaded', () => {
+    // Délai pour laisser le temps aux autres éléments de se charger
+    setTimeout(() => {
+        initSocialProofAvatars();
+        setupAvatarScrollAnimation();
+        setupAvatarHoverEffects();
+    }, 200);
+});
+
+// Export pour utilisation externe
+window.SocialProofAvatars = {
+    init: initSocialProofAvatars,
+    setupScrollAnimation: setupAvatarScrollAnimation,
+    setupHoverEffects: setupAvatarHoverEffects
+};
