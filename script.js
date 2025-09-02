@@ -109,3 +109,100 @@ function setupScrollAnimations() {
 
 // Initialisation des animations au scroll
 document.addEventListener('DOMContentLoaded', setupScrollAnimations);
+
+// Cookie Consent Management
+
+// Cookie Consent Management
+document.addEventListener("DOMContentLoaded", function() {
+    // Temporarily show popup on every visit for testing
+    // const cookieConsent = localStorage.getItem("cookieConsent");
+    // if (!cookieConsent) {
+        // Show cookie popup after 1 second
+        setTimeout(() => {
+            document.getElementById("cookieConsent").classList.add("show");
+        }, 1000);
+    // }
+});
+// Accept all cookies
+function acceptCookies() {
+    const preferences = {
+        essential: true,
+        analytics: true,
+        marketing: true,
+        timestamp: new Date().toISOString()
+    };
+    
+    localStorage.setItem("cookieConsent", JSON.stringify(preferences));
+    document.getElementById("cookieConsent").classList.remove("show");
+    
+    // Initialize tracking scripts here if needed
+    console.log("All cookies accepted");
+}
+
+// Reject non-essential cookies
+function rejectCookies() {
+    const preferences = {
+        essential: true,
+        analytics: false,
+        marketing: false,
+        timestamp: new Date().toISOString()
+    };
+    
+    localStorage.setItem("cookieConsent", JSON.stringify(preferences));
+    document.getElementById("cookieConsent").classList.remove("show");
+    
+    console.log("Non-essential cookies rejected");
+}
+
+// Open cookie settings modal
+function openCookieSettings() {
+    document.getElementById("cookieSettings").classList.add("show");
+    
+    // Load current preferences if they exist
+    const savedPreferences = localStorage.getItem("cookieConsent");
+    if (savedPreferences) {
+        const prefs = JSON.parse(savedPreferences);
+        document.getElementById("analyticsCookies").checked = prefs.analytics || false;
+        document.getElementById("marketingCookies").checked = prefs.marketing || false;
+    }
+}
+
+// Close cookie settings modal
+function closeCookieSettings() {
+    document.getElementById("cookieSettings").classList.remove("show");
+}
+
+// Save cookie preferences
+function saveSettings(acceptAll = false) {
+    const preferences = {
+        essential: true,
+        analytics: acceptAll || document.getElementById("analyticsCookies").checked,
+        marketing: acceptAll || document.getElementById("marketingCookies").checked,
+        timestamp: new Date().toISOString()
+    };
+    
+    localStorage.setItem("cookieConsent", JSON.stringify(preferences));
+    document.getElementById("cookieConsent").classList.remove("show");
+    document.getElementById("cookieSettings").classList.remove("show");
+    
+    console.log("Cookie preferences saved:", preferences);
+    
+    // Initialize or remove tracking scripts based on preferences
+    if (preferences.analytics) {
+        // Initialize analytics (Google Analytics, etc.)
+        console.log("Analytics cookies enabled");
+    }
+    
+    if (preferences.marketing) {
+        // Initialize marketing cookies (Facebook Pixel, etc.)
+        console.log("Marketing cookies enabled");
+    }
+}
+
+// Close modal when clicking outside
+document.addEventListener("click", function(event) {
+    const settingsModal = document.getElementById("cookieSettings");
+    if (event.target === settingsModal) {
+        closeCookieSettings();
+    }
+});
