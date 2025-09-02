@@ -71,6 +71,32 @@ document.addEventListener('DOMContentLoaded', function() {
 MODAL SYSTÈME - Gestion des fenêtres modales
 =====================================================
 */
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const navLinks = document.querySelector(".nav-links");
+    const mobileToggle = document.querySelector(".mobile-menu-toggle");
+    
+    navLinks.classList.toggle("mobile-open");
+    mobileToggle.classList.toggle("active");
+    
+    // Change aria-label based on menu state
+    const isOpen = navLinks.classList.contains("mobile-open");
+    mobileToggle.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+}
+
+// Close mobile menu when clicking on links
+document.addEventListener("DOMContentLoaded", function() {
+    const navLinks = document.querySelectorAll(".nav-links a");
+    navLinks.forEach(link => {
+        link.addEventListener("click", function() {
+            const navLinksContainer = document.querySelector(".nav-links");
+            const mobileToggle = document.querySelector(".mobile-menu-toggle");
+            navLinksContainer.classList.remove("mobile-open");
+            mobileToggle.classList.remove("active");
+            mobileToggle.setAttribute("aria-label", "Ouvrir le menu");
+        });
+    });
+});
 function openModal() {
     console.log('Ouverture de la modal de réservation');
     // Logique pour ouvrir la modal de réservation

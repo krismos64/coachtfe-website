@@ -101,12 +101,18 @@
         <nav role="navigation" aria-label="Navigation principale">
         <div class="nav-container">
             <div class="logo">
-                <img src="images/logo-coachtfe.png" alt="CoachTFE.fr - Expert accompagnement TFE infirmier" class="logo-coachtfe">
-                <div class="logo-subtitle"><span class="by-text">by</span><img src="images/logo-staka.png" alt="Staka - Partenaire CoachTFE" class="staka-logo"></div>                <button class="mobile-menu-toggle" aria-label="Ouvrir le menu" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <svg class="caduceus" viewBox="0 0 100 100" fill="none">
+                    <path d="M50 10 L50 85" stroke="#002395" stroke-width="3"/>
+                    <path d="M35 20 Q50 25, 65 20" stroke="#002395" stroke-width="2" fill="none"/>
+                    <path d="M35 30 Q50 35, 65 30" stroke="#002395" stroke-width="2" fill="none"/>
+                    <circle cx="42" cy="15" r="5" fill="#ED2939"/>
+                    <circle cx="58" cy="15" r="5" fill="#ED2939"/>
+                    <path d="M40 85 L50 75 L60 85" stroke="#002395" stroke-width="2" fill="none"/>
+                </svg>
+                <div>
+                    <div class="logo-text">CoachTFE.fr</div>
+                    <div class="logo-subtitle"><span class="by-text">by</span><img src="images/logo-staka.png" alt="Staka - Partenaire CoachTFE" class="staka-logo"></div>
+                </div>
             </div>
             <div class="nav-links">
                 <a href="#expertise">Notre Expertise</a>
@@ -114,7 +120,8 @@
                 <a href="#formulas">Formules</a>
                 <a href="#testimonials">Témoignages</a>
                 <a href="#" class="cta-nav" onclick="openModal()">Entretien Gratuit</a>
-            </div>        </div>
+            </div>
+        </div>
         </nav>
     </header>
 
@@ -557,8 +564,7 @@
                     <div class="author-avatar">SL</div>
                     <div class="author-info">
                         <div class="author-name">Sophie L.</div>
-                        <div class="author-r
-                    ole">IFSI Pitié-Salpêtrière</div>
+                        <div class="author-role">IFSI Pitié-Salpêtrière</div>
                     </div>
                 </div>
             </div>
