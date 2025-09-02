@@ -1,14 +1,104 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Balises meta essentielles -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- SEO Principal -->
     <title>CoachTFE.fr - Expert en Accompagnement TFE Infirmier | 15 ans d'expertise</title>
+    <meta name="description" content="Expert en accompagnement TFE infirmier avec 15 ans d'expérience. Méthodologie rigoureuse, 98% de réussite sur 1500+ étudiants. Entretien gratuit de 30 min.">
+    <meta name="keywords" content="TFE infirmier, accompagnement TFE, méthodologie recherche, formation IFSI, mémoire infirmier, coach TFE, expertise infirmière">
+    <meta name="author" content="CoachTFE.fr - Staka">
+    
+    <!-- Balises canoniques -->
+    <link rel="canonical" href="https://www.coachtfe.fr/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.coachtfe.fr/">
+    <meta property="og:title" content="CoachTFE.fr - Expert en Accompagnement TFE Infirmier">
+    <meta property="og:description" content="Expert en accompagnement TFE infirmier avec 15 ans d'expérience. 98% de réussite sur 1500+ étudiants. Méthodologie rigoureuse adaptée à chaque IFSI.">
+    <meta property="og:image" content="https://www.coachtfe.fr/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="CoachTFE.fr">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.coachtfe.fr/">
+    <meta name="twitter:title" content="CoachTFE.fr - Expert en Accompagnement TFE Infirmier">
+    <meta name="twitter:description" content="Expert en accompagnement TFE infirmier avec 15 ans d'expérience. 98% de réussite sur 1500+ étudiants.">
+    <meta name="twitter:image" content="https://www.coachtfe.fr/images/twitter-image.jpg">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" href="images/favicon/favicon-32x32.png" type="image/png">
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "CoachTFE.fr",
+        "url": "https://www.coachtfe.fr",
+        "logo": "https://www.coachtfe.fr/images/logo-coachtfe.png",
+        "description": "Expert en accompagnement TFE infirmier avec 15 ans d'expérience. Méthodologie rigoureuse adaptée à chaque IFSI.",
+        "foundingDate": "2010",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+33-1-84-25-56-78",
+            "contactType": "customer service",
+            "availableLanguage": "French"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+        },
+        "sameAs": [
+            "https://www.facebook.com/coachtfe",
+            "https://www.linkedin.com/company/coachtfe"
+        ]
+    }
+    </script>
+    
+    <!-- Service JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Accompagnement TFE Infirmier",
+        "description": "Services d'accompagnement personnalisé pour la réalisation du Travail de Fin d'Études infirmier",
+        "provider": {
+            "@type": "Organization",
+            "name": "CoachTFE.fr"
+        },
+        "areaServed": "France",
+        "serviceType": "Formation et accompagnement pédagogique",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceCurrency": "EUR"
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
+    <header>
+        <nav role="navigation" aria-label="Navigation principale">
         <div class="nav-container">
             <div class="logo">
                 <svg class="caduceus" viewBox="0 0 100 100" fill="none">
@@ -32,13 +122,16 @@
                 <a href="#" class="cta-nav" onclick="openModal()">Entretien Gratuit</a>
             </div>
         </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
         <div class="hero-container">
             <div class="hero-text">
-                <h1>Staka vous accompagne dans la finalisation de votre TFE</h1>
+                <h1 id="hero-title">Staka vous accompagne dans la finalisation de votre TFE</h1>
                 <p class="subtitle">15 ans d'expertise au service de votre réussite</p>
                 <ul class="expertise-points">
                     <li>
@@ -93,10 +186,10 @@
         </div>
     </section>
 
-    <!-- Expertise Section -->
-    <section class="expertise" id="expertise">
+        <!-- Expertise Section -->
+        <section class="expertise" id="expertise" aria-labelledby="expertise-title">
         <div class="section-header">
-            <h2 class="section-title">Notre Expertise à Votre Service</h2>
+            <h2 id="expertise-title" class="section-title">Notre Expertise à Votre Service</h2>
             <p class="section-subtitle">Une équipe de professionnels de santé et d'enseignants spécialisés dans la méthodologie de recherche infirmière</p>
         </div>
         <div class="expertise-grid">
@@ -603,7 +696,10 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>CoachTFE.fr</h4>

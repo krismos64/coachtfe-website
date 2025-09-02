@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.coachtfe.fr/sitemap.xml
+
+# Optimisation SEO
+Crawl-delay: 1
+
+# Interdire l'indexation de certains dossiers si nécessaire
+# Disallow: /admin/
+# Disallow: /private/
