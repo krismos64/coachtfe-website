@@ -131,7 +131,7 @@ Lighthouse      # Audit qualité
 ```bash
 # Cloner le repository
 git clone https://github.com/krismos64/coachtfe-website.git
-cd coachtfe-website
+cd /Users/chris/Documents/sites/coachtfe-website
 
 # Lancer un serveur local (Python)
 python -m http.server 8000
@@ -260,18 +260,28 @@ const BUBBLE_CONFIG = {
 ```
 coachtfe-website/
 ├── 📄 index.html              # Page principale
-├── 🎨 styles.css             # Styles principaux
+├── 🎨 styles.min.css         # Styles principaux
 ├── ⚡ script.js               # Animations et interactions
+├── 📄 mentions-legales.html   # Page mentions légales
+├── 📄 CLAUDE.md              # Instructions IA locale
 ├── 📁 images/                 # Ressources visuelles
 │   ├── Expert1.jpg           # Bulle animation 1
 │   ├── EXPERT2.jpg           # Bulle animation 2
 │   ├── HOME1.jpg             # Bulle animation 3
 │   ├── HOME2.jpg             # Bulle animation 4
 │   ├── HOME3.jpg             # Bulle animation 5
+│   ├── logo-coachtfe.png     # Logo principal
 │   ├── logo-staka.png        # Logo partenaire
-│   └── logo-trustpilot.png   # Logo avis clients
+│   ├── logo-trustpilot.png   # Logo avis clients
+│   ├── livre.png             # Image livre guide TFE
+│   └── favicon/              # Icônes site
+│       ├── favicon-32x32.png
+│       ├── favicon-16x16.png
+│       └── apple-touch-icon.png
 ├── 📖 README.md              # Documentation projet
 ├── 📁 docs/                  # Documentation technique
+├── 📁 .claude/               # Configuration Claude
+│   └── settings.local.json   # Permissions locales
 └── 🔧 .gitignore             # Fichiers exclus Git
 ```
 
