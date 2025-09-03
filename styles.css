@@ -37,6 +37,19 @@
             line-height: 1.6;          /* Hauteur de ligne optimale pour la lisibilité */
             color: var(--noir);        /* Couleur de texte principale */
             background: var(--blanc);  /* Arrière-plan blanc */
+            overflow-x: hidden;        /* Empêche le défilement horizontal */
+            width: 100%;
+        }
+
+        /* Conteneur global pour éviter les débordements */
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Reset pour éviter les débordements */
+        *, *::before, *::after {
+            max-width: 100%;
         }
 
         /*
@@ -62,7 +75,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .logo {
@@ -1650,6 +1664,89 @@
 
         /* TABLETTES PORTRAIT ET GRANDES MOBILES (max 768px) */
         @media (max-width: 768px) {
+            /* Fix global pour éviter le débordement */
+            body, html {
+                overflow-x: hidden !important;
+                width: 100% !important;
+            }
+            
+            /* Cookie consent responsive */
+            .cookie-consent {
+                padding: 15px;
+                width: 100%;
+                left: 0;
+                right: 0;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .cookie-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            /* Sections overflow fixes */
+            section {
+                overflow-x: hidden !important;
+                width: 100% !important;
+            }
+            
+            .container, [class*="container"] {
+                max-width: 100%;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                box-sizing: border-box;
+            }
+            
+            /* Images responsive - sauf logos spécifiques */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            /* Tailles spécifiques des logos sur mobile */
+            .logo-coachtfe {
+                height: 60px !important;
+                width: auto !important;
+                max-width: 200px !important;
+            }
+            
+            .staka-logo {
+                height: 15px !important;
+                width: auto !important;
+            }
+            
+            .trustpilot-logo {
+                max-height: 25px !important;
+                width: auto !important;
+            }
+            
+            .trust-logo {
+                max-height: 40px !important;
+                width: auto !important;
+            }
+            
+            /* Fix for absolute positioned elements */
+            .popular-badge {
+                white-space: nowrap;
+            }
+            
+            /* Désactiver les animations potentiellement problématiques */
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    animation: none !important;
+                    transition: none !important;
+                }
+            }
+            
             /* Navigation - Masquage complet des liens */
             .nav-links {
                 display: none;
@@ -1677,8 +1774,11 @@
             }
 
             .nav-container {
-                justify-content: center;
-            }            /* Hero section - Layout en colonne unique */
+                justify-content: space-between;
+                padding: 0.5rem 1rem;
+            }
+            
+            /* Hero section - Layout en colonne unique */
             .hero-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -1729,7 +1829,7 @@
             }
 
             .roadmap-content {
-                margin-left: 1rem;
+                margin-left: 3rem;
             }
 
             .roadmap-line {
@@ -1737,8 +1837,18 @@
             }
 
             .roadmap-marker {
-                width: auto;
-            max-width: 200px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                flex-shrink: 0;
+            }
+            
+            .roadmap-item {
+                margin-bottom: 2rem;
+            }
+            
+            .roadmap-container {
+                padding-left: 0.5rem;
             }
 
             /* Navigation mobile */
@@ -2002,6 +2112,8 @@
 
         .trustpilot-logo {
             width: auto;
+            max-height: 40px;
+            height: auto;
         }
 
         .trustpilot-rating {
@@ -2194,7 +2306,7 @@
 
 .cookie-text {
     flex: 1;
-    min-width: 300px;
+    min-width: 0;
 }
 
 .cookie-text h3 {
