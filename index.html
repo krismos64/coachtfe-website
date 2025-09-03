@@ -44,8 +44,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- CSS avec preload pour les performances -->
+    <link rel="preload" href="styles.min.css" as="style">
+    <link rel="stylesheet" href="styles.min.css">
+    
+    <!-- Preload des images critiques -->
+    <link rel="preload" href="images/logo-coachtfe.png" as="image">
+    <link rel="preload" href="images/HOME1.jpg" as="image">
     
     <!-- Données structurées JSON-LD -->
     <script type="application/ld+json">
@@ -147,9 +152,9 @@
                 
                 <div class="social-proof">
                     <div class="avatars" aria-hidden="true">
-                        <div class="avatar"><img src="images/HOME1.jpg" alt="Étudiant TFE réussi"></div>
-                        <div class="avatar"><img src="images/Expert1.jpg" alt="Formateur expert TFE"></div>
-                        <div class="avatar"><img src="images/HOME2.jpg" alt="Étudiante accompagnée"></div>
+                        <div class="avatar"><img src="images/HOME1.jpg" alt="Étudiant TFE réussi" loading="lazy"></div>
+                        <div class="avatar"><img src="images/Expert1.jpg" alt="Formateur expert TFE" loading="lazy"></div>
+                        <div class="avatar"><img src="images/HOME2.jpg" alt="Étudiante accompagnée" loading="lazy"></div>
                     </div>
                     <p class="headline">
                         Choisi par <span class="accent">1500+</span> étudiants
@@ -232,8 +237,8 @@
         
         <div class="social-proof expertise-social-proof">
             <div class="avatars" aria-hidden="true">
-                <div class="avatar"><img src="images/HOME3.jpg" alt="Expert en méthodologie TFE"></div>
-                <div class="avatar"><img src="images/EXPERT2.jpg" alt="Spécialiste accompagnement TFE"></div>
+                <div class="avatar"><img src="images/HOME3.jpg" alt="Expert en méthodologie TFE" loading="lazy"></div>
+                <div class="avatar"><img src="images/EXPERT2.jpg" alt="Spécialiste accompagnement TFE" loading="lazy"></div>
             </div>
             <p class="headline">
                 Équipe de <span class="accent">15+</span> experts
@@ -593,7 +598,7 @@
                 <div class="trustpilot-content">
                     <div>
                     <div>
-                        <img src="images/logo-trustpilot.png" alt="Trustpilot - Avis clients vérifiés CoachTFE" class="trustpilot-logo">
+                        <img src="images/logo-trustpilot.png" alt="Trustpilot - Avis clients vérifiés CoachTFE" class="trustpilot-logo" loading="lazy">
                     </div>
                     <div class="trustpilot-rating">
                         <div class="stars">★★★★★</div>
@@ -695,7 +700,7 @@
             <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 40px; justify-content: center;">
                 <!-- Book Image -->
                 <div style="flex: 0 0 280px; text-align: center;">
-                    <img src="images/livre.png" alt="Le guide ultime du TFE infirmier" style="width: 100%; max-width: 280px; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <img src="images/livre.png" alt="Le guide ultime du TFE infirmier" loading="lazy" style="width: 100%; max-width: 280px; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                 </div>
                 
                 <!-- Book Content -->
@@ -776,7 +781,7 @@
                 <!-- Logo Staka -->
                 <div style="margin: 20px 0;">
                     <a href="https://staka.fr/" target="_blank" rel="noopener noreferrer">
-                        <img src="images/logo-staka.png" alt="Staka" style="height: 40px; width: auto;">
+                        <img src="images/logo-staka.png" alt="Staka" loading="lazy" style="height: 40px; width: auto;">
                     </a>
                 </div>
              
