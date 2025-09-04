@@ -118,7 +118,7 @@
                 <a href="#services">Services</a>
                 <a href="#formulas">Formules</a>
                 <a href="#testimonials">Témoignages</a>
-                <a href="#" class="cta-nav" onclick="openModal()">Entretien Gratuit</a>
+                <a href="#" class="cta-nav" onclick="openFabMenu()">Entretien Gratuit</a>
             </div>        </div>
         </nav>
     </header>
@@ -146,7 +146,7 @@
                     </li>
                 </ul>
                 <div class="hero-buttons">
-                    <a href="#" class="btn-primary" onclick="openModal()">30 min d'entretien gratuit</a>
+                    <a href="#" class="btn-primary" onclick="openFabMenu()">30 min d'entretien gratuit</a>
                     <a href="#formulas" class="btn-secondary">Découvrir nos formules</a>
                 </div>
                 
@@ -400,7 +400,7 @@
                     <li>Relecture et corrections</li>
                     <li>Support par email limité</li>
                 </ul>
-                <a href="#" class="formula-cta" onclick="openModal()">Choisir cette formule</a>
+                <a href="#" class="formula-cta" onclick="openFabMenu()">Choisir cette formule</a>
             </div>
             <div class="formula-card popular">
                 <span class="popular-badge">Recommandé</span>
@@ -416,7 +416,7 @@
                     <li>Préparation soutenance</li>
                     <li>Garantie de réussite</li>
                 </ul>
-                <a href="#" class="formula-cta" onclick="openModal()">Choisir cette formule</a>
+                <a href="#" class="formula-cta" onclick="openFabMenu()">Choisir cette formule</a>
             </div>
             <div class="formula-card">
                 <h3 class="formula-name">Correction & Soutenance</h3>
@@ -428,7 +428,7 @@
                     <li>2 séances soutenance</li>
                     <li>PowerPoint professionnel</li>
                 </ul>
-                <a href="#" class="formula-cta" onclick="openModal()">Choisir cette formule</a>
+                <a href="#" class="formula-cta" onclick="openFabMenu()">Choisir cette formule</a>
             </div>
         </div>
     </section>
@@ -542,7 +542,7 @@
                 <div>✓ Conseils personnalisés</div>
                 <div>✓ Sans engagement</div>
             </div>
-            <button onclick="openModal(); closePopup();" class="popup-btn">Réserver maintenant</button>
+            <button onclick="openFabMenu(); closePopup();" class="popup-btn">Réserver maintenant</button>
             <p class="popup-disclaimer">Places limitées - Réponse sous 24h</p>
         </div>
     </div>
@@ -690,7 +690,7 @@
         <div class="cta-content">
             <h2 class="cta-title">Prêt à Réussir votre TFE ?</h2>
             <p class="cta-text">Bénéficiez de notre expertise de 15 ans et rejoignez nos 1500+ étudiants diplômés</p>
-            <a href="#" class="cta-button" onclick="openModal()">Réserver mon entretien gratuit de 30 minutes</a>
+            <a href="#" class="cta-button" onclick="openFabMenu()">Réserver mon entretien gratuit de 30 minutes</a>
         </div>
     </section>
 
@@ -870,11 +870,11 @@
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
             </a>
-            <div class="fab-item email-fab" onclick="openModal()">
+            <a href="mailto:contact@staka.fr" class="fab-item email-fab">
                 <svg viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -957,22 +957,51 @@
 
         // FAB Menu Toggle
         let fabMenuOpen = false;
-        function toggleFabMenu() {
+        window.toggleFabMenu = function() {
             const fabMenu = document.querySelector('.fab-menu');
             const fabIcon = document.querySelector('.fab-icon');
             const fabClose = document.querySelector('.fab-close');
             
             if (!fabMenuOpen) {
+                fabMenu.classList.remove('hidden');
                 fabMenu.style.display = 'flex';
-                fabIcon.style.display = 'none';
-                fabClose.style.display = 'block';
+                fabIcon.classList.add('hidden');
+                fabClose.classList.remove('hidden');
                 fabMenuOpen = true;
             } else {
+                fabMenu.classList.add('hidden');
                 fabMenu.style.display = 'none';
-                fabIcon.style.display = 'block';
-                fabClose.style.display = 'none';
+                fabIcon.classList.remove('hidden');
+                fabClose.classList.add('hidden');
                 fabMenuOpen = false;
             }
+        }
+        
+        // Open FAB Menu from navbar
+        window.openFabMenu = function() {
+            event.preventDefault();
+            const fabMenu = document.querySelector('.fab-menu');
+            const fabIcon = document.querySelector('.fab-icon');
+            const fabClose = document.querySelector('.fab-close');
+            const fabContainer = document.querySelector('.fab-container');
+            
+            // Open the FAB menu if not already open
+            if (!fabMenuOpen) {
+                fabMenu.classList.remove('hidden');
+                fabMenu.style.display = 'flex';
+                fabIcon.classList.add('hidden');
+                fabClose.classList.remove('hidden');
+                fabMenuOpen = true;
+            }
+            
+            // Scroll to FAB with smooth animation
+            fabContainer.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            
+            // Add a highlight effect
+            fabContainer.style.animation = 'pulse 1s ease-in-out 2';
+            setTimeout(() => {
+                fabContainer.style.animation = '';
+            }, 2000);
         }
 
         // Form submission
