@@ -19,7 +19,11 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+
 # Configuration des formulaires Netlify
 # Les notifications seront envoyées à l'email configuré dans Netlify Dashboard
 # Aller dans Site settings > Forms > Form notifications
 # Ajouter c.mostefaoui@yahoo.fr comme destinataire des notifications
+# 
+# Sujet d'email personnalisé recommandé :
+# "🎯 Nouvelle demande d'entretien gratuit - {{fullName}} ({{urgency}}) - CoachTFE"
