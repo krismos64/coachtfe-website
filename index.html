@@ -1003,25 +1003,58 @@
             }
         });
 
-        // Form submission for Entretien
+        // Form submission for Entretien - Netlify Forms
         document.getElementById('entretienForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Récupération des données du formulaire
-            const formData = {
-                fullName: document.getElementById('fullName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                urgency: document.getElementById('urgency').value,
-                projectDescription: document.getElementById('projectDescription').value
-            };
+            const form = e.target;
+            const formData = new FormData(form);
             
-            // Afficher un message de succès
-            alert('Merci pour votre demande d\'entretien gratuit ! Nous vous contacterons dans les 24h pour planifier votre rendez-vous de 30 minutes.');
-            
-            // Réinitialiser le formulaire et fermer la modale
-            this.reset();
-            closeEntretienModal();
+            // Soumettre le formulaire via Netlify Forms
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // Afficher un message de succès stylé
+                const successMessage = document.createElement('div');
+                successMessage.innerHTML = `
+                    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                                background: white; padding: 2rem; border-radius: 15px; 
+                                box-shadow: 0 10px 40px rgba(0,35,149,0.2); z-index: 3000; 
+                                max-width: 400px; text-align: center;">
+                        <div style="color: #27ae60; font-size: 3rem; margin-bottom: 1rem;">✓</div>
+                        <h3 style="color: var(--bleu-france); margin-bottom: 1rem;">Demande envoyée avec succès !</h3>
+                        <p style="color: var(--noir); line-height: 1.6;">
+                            Nous avons bien reçu votre demande d'entretien gratuit. 
+                            Un expert vous contactera dans les 24h pour planifier votre rendez-vous de 30 minutes.
+                        </p>
+                        <button onclick="this.parentElement.remove(); document.body.style.overflow='auto';" 
+                                style="background: var(--bleu-france); color: white; border: none; 
+                                       padding: 0.75rem 2rem; border-radius: 25px; margin-top: 1.5rem; 
+                                       cursor: pointer; font-size: 1rem;">
+                            Fermer
+                        </button>
+                    </div>
+                `;
+                document.body.appendChild(successMessage);
+                
+                // Réinitialiser et fermer le formulaire
+                form.reset();
+                closeEntretienModal();
+                
+                // Retirer le message après 5 secondes
+                setTimeout(() => {
+                    if (successMessage.parentNode) {
+                        successMessage.remove();
+                    }
+                }, 5000);
+            })
+            .catch((error) => {
+                console.error('Erreur:', error);
+                alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer ou nous contacter directement.');
+            });
         });
 
         // Open FAB Menu from navbar
@@ -1096,7 +1129,13 @@
                 <p>30 minutes avec un expert pour définir votre stratégie de réussite</p>
             </div>
             
-            <form id="entretienForm" class="entretien-form">
+            <form id="entretienForm" class="entretien-form" name="entretien-gratuit" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <!-- Honeypot anti-spam pour Netlify -->
+                <input type="hidden" name="form-name" value="entretien-gratuit">
+                <p class="hidden">
+                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                </p>
+                
                 <div class="form-group-entretien">
                     <label for="fullName">Nom complet <span class="required">*</span></label>
                     <input type="text" id="fullName" name="fullName" required placeholder="Jean Dupont">
