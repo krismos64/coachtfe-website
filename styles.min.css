@@ -1369,82 +1369,99 @@ footer {
   z-index: 2000;
 }
 
-/* Modal Entretien Gratuit - Styles spécifiques */
+/* Modal Entretien Gratuit - Design moderne et fluide */
 .entretien-modal-content {
   background: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 600px;
-  width: 90%;
+  max-width: 550px;
+  width: 92%;
   max-height: 90vh;
   overflow-y: auto;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 35, 149, 0.15);
-  animation: modalFadeIn 0.3s ease;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 35, 149, 0.15);
+  border: 1px solid rgba(0, 35, 149, 0.08);
+  animation: modalSlideIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes modalFadeIn {
+@keyframes modalSlideIn {
   from {
     opacity: 0;
-    transform: translate(-50%, -45%);
+    transform: translate(-50%, -60%) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
 .modal-header-entretien {
-  background: linear-gradient(135deg, var(--bleu-france), #003a8c);
+  background: var(--bleu-france);
   color: white;
-  padding: 2rem;
+  padding: 1.75rem 1.5rem;
   text-align: center;
-  border-radius: 20px 20px 0 0;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+}
+
+.modal-header-entretien::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--rouge-france);
 }
 
 .modal-header-entretien h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .modal-header-entretien p {
-  font-size: 1rem;
-  opacity: 0.95;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  margin: 0;
 }
 
 .entretien-form {
-  padding: 2rem;
+  padding: 1.75rem 1.5rem;
 }
 
 .form-group-entretien {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .form-group-entretien label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   font-weight: 600;
   color: var(--noir);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
 }
 
 .form-group-entretien .required {
   color: var(--rouge-france);
+  font-weight: 700;
 }
 
 .form-group-entretien input,
 .form-group-entretien select,
 .form-group-entretien textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   font-family: inherit;
+  background: #fafafa;
 }
 
 .form-group-entretien input:focus,
@@ -1452,53 +1469,63 @@ footer {
 .form-group-entretien textarea:focus {
   outline: none;
   border-color: var(--bleu-france);
-  box-shadow: 0 0 0 3px rgba(0, 35, 149, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 35, 149, 0.08);
+  background: white;
 }
 
 .form-group-entretien textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 90px;
+  line-height: 1.5;
 }
 
 .form-submit-group {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1.75rem;
 }
 
 .btn-submit-entretien {
-  background: linear-gradient(135deg, var(--bleu-france), #003a8c);
+  background: var(--bleu-france);
   color: white;
   border: none;
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
   font-weight: 600;
-  border-radius: 50px;
+  border-radius: 8px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 35, 149, 0.3);
+  gap: 0.6rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 35, 149, 0.2);
+  min-width: 200px;
+  justify-content: center;
 }
 
 .btn-submit-entretien:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 35, 149, 0.4);
-  background: linear-gradient(135deg, #003a8c, var(--bleu-france));
+  background: #001870;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 35, 149, 0.3);
+}
+
+.btn-submit-entretien:active {
+  transform: translateY(0);
 }
 
 .btn-submit-entretien svg {
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .btn-submit-entretien:hover svg {
-  transform: translateX(3px);
+  transform: translateX(2px);
 }
 
 .form-note {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   color: var(--gris);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-style: italic;
 }
 
 /* Hidden honeypot field */
@@ -1506,44 +1533,72 @@ footer {
   display: none !important;
 }
 
-/* Animation de fermeture */
+/* Animation de fermeture simplifiée */
 .modal-closing .entretien-modal-content {
-  animation: modalFadeOut 0.3s ease;
+  animation: modalSlideOut 0.2s ease-out;
 }
 
-@keyframes modalFadeOut {
+@keyframes modalSlideOut {
   from {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
   }
   to {
     opacity: 0;
-    transform: translate(-50%, -55%);
+    transform: translate(-50%, -60%) scale(0.95);
   }
 }
 
-/* Responsive pour la modale */
+/* Responsive optimisé */
 @media (max-width: 768px) {
   .entretien-modal-content {
     width: 95%;
-    max-height: 95vh;
+    max-height: 92vh;
+    border-radius: 12px;
   }
   
   .modal-header-entretien {
-    padding: 1.5rem;
+    padding: 1.5rem 1.25rem;
+    border-radius: 12px 12px 0 0;
   }
   
   .modal-header-entretien h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
   .entretien-form {
-    padding: 1.5rem;
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .form-group-entretien {
+    margin-bottom: 1rem;
   }
   
   .btn-submit-entretien {
     width: 100%;
-    justify-content: center;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .entretien-modal-content {
+    width: 98%;
+    max-height: 95vh;
+  }
+  
+  .modal-header-entretien {
+    padding: 1.25rem 1rem;
+  }
+  
+  .entretien-form {
+    padding: 1.25rem 1rem;
+  }
+  
+  .form-group-entretien input,
+  .form-group-entretien select,
+  .form-group-entretien textarea {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.9rem;
   }
 }
 
