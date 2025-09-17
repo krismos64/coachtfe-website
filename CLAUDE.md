@@ -149,7 +149,7 @@ python3 -m http.server 8000
 ## =� Contacts projet
 
 - **Dev** : Christophe (christophe-dev-freelance.fr)
-- **Client** : contact@staka.fr / 06 80 35 60 22
+- **Client** : 06 80 35 60 22
 - **Prod** : https://coachtfe.fr
 
 ## � R�gles Claude Code

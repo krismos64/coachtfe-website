@@ -1169,12 +1169,12 @@ nav {
   transform: scale(1.1);
 }
 
-.email-fab {
+.phone-fab {
   background: var(--rouge-france);
   cursor: pointer;
 }
 
-.email-fab:hover {
+.phone-fab:hover {
   background: #d02030;
   transform: scale(1.1);
 }

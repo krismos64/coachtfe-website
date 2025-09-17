@@ -23,7 +23,6 @@
 # Configuration des formulaires Netlify
 # Les notifications seront envoyées à l'email configuré dans Netlify Dashboard
 # Aller dans Site settings > Forms > Form notifications
-# Ajouter contact@staka.fr comme destinataire des notifications
-# 
+#
 # Sujet d'email personnalisé recommandé :
 # "🎯 Nouvelle demande d'entretien gratuit - {{fullName}} ({{urgency}}) - CoachTFE"
