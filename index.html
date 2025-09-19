@@ -5,7 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BCKWKBVDN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9BCKWKBVDN');
+    </script>
+
     <!-- SEO Principal -->
     <title>CoachTFE.fr - Expert en Accompagnement TFE Infirmier | 15 ans d'expertise</title>
     <meta name="description" content="Expert en accompagnement TFE infirmier avec 15 ans d'expérience. Méthodologie rigoureuse, 98% de réussite sur 1500+ étudiants. Entretien gratuit de 30 min.">
@@ -44,9 +53,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- CSS avec preload pour les performances -->
-    <link rel="preload" href="styles.min.css" as="style">
-    <link rel="stylesheet" href="styles.min.css">
+    <!-- CSS avec preload pour les performances et cache busting -->
+    <link rel="preload" href="styles.min.css?v=1758269858" as="style">
+    <link rel="stylesheet" href="styles.min.css?v=1758269858">
     
     <!-- Preload des images critiques -->
     <link rel="preload" href="images/logo-coachtfe.png" as="image">
@@ -1216,7 +1225,7 @@
     </div>
 
     <!-- Script externe pour les animations -->
-    <script src="script.js"></script>
+    <script src="script.js?v=1758269858"></script>
     
     <script>
         // Fonctions pour la modale de la Charte

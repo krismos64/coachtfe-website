@@ -1,0 +1,36 @@
+# Cache Control Headers pour forcer le rechargement
+<IfModule mod_headers.c>
+    # Désactive le cache pour HTML (toujours frais)
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+
+    # Cache court pour CSS et JS (1 heure) pendant la phase de correction
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "max-age=3600, must-revalidate"
+    </FilesMatch>
+
+    # Cache normal pour les images (30 jours)
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+
+    # Cache pour les fonts (1 an)
+    <FilesMatch "\.(woff|woff2|ttf|eot)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+# Active la compression Gzip
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Force HTTPS (si nécessaire)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
