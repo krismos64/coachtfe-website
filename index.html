@@ -1015,16 +1015,22 @@
         }
 
         // Close modal on outside click
-        document.getElementById('entretienModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeEntretienModal();
-            }
-        });
+        const entretienModal = document.getElementById('entretienModal');
+        if (entretienModal) {
+            entretienModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeEntretienModal();
+                }
+            });
+        }
 
         // Fermer la modale quand le formulaire est soumis
-        document.getElementById('entretienForm').addEventListener('submit', function() {
-            closeEntretienModal();
-        });
+        const entretienForm = document.getElementById('entretienForm');
+        if (entretienForm) {
+            entretienForm.addEventListener('submit', function() {
+                closeEntretienModal();
+            });
+        }
 
         // Open FAB Menu from navbar
         window.openFabMenu = function() {

@@ -1,3 +1,31 @@
+# Headers de sécurité pour améliorer les bonnes pratiques
+<IfModule mod_headers.c>
+    # Content Security Policy (CSP) - Protection XSS
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;"
+
+    # HTTP Strict Transport Security (HSTS) - Force HTTPS pendant 1 an
+    # À activer uniquement quand le SSL fonctionne correctement
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Cross-Origin-Opener-Policy (COOP)
+    Header set Cross-Origin-Opener-Policy "same-origin"
+
+    # Cross-Origin-Resource-Policy
+    Header set Cross-Origin-Resource-Policy "same-origin"
+
+    # X-Content-Type-Options - Prévient le MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+
+    # X-Frame-Options - Prévient le clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+
+    # Referrer Policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions Policy
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
 # Cache Control Headers pour forcer le rechargement
 <IfModule mod_headers.c>
     # Désactive le cache pour HTML (toujours frais)
