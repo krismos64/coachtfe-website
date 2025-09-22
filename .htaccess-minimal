@@ -1,0 +1,28 @@
+# Configuration MINIMALE pour diagnostiquer les problèmes SSL
+# Utilisez ce fichier si vous avez des erreurs SSL persistantes
+
+# Headers de sécurité basiques
+<IfModule mod_headers.c>
+    # Désactive complètement HSTS pour éviter le forçage HTTPS
+    Header unset Strict-Transport-Security
+
+    # Headers de sécurité minimaux
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Cache simple
+<IfModule mod_headers.c>
+    # Pas de cache pour HTML
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
+
+# Compression basique
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript
+</IfModule>
+
+# PAS de redirection HTTPS - le site fonctionne en HTTP et HTTPS
+# Cela permet de diagnostiquer si le problème vient du certificat SSL
