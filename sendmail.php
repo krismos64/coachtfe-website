@@ -1,6 +1,6 @@
 <?php
 // Configuration
-$destinataire = 'c.mostefaoui@yahoo.fr';
+$destinataire = 'contact@staka.fr';
 $expediteur = 'noreply@coachtfe.fr';
 $sujet = 'Nouveau message depuis le site CoachTFE';
 
