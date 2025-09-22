@@ -1,0 +1,9 @@
+# Configuration pour améliorer l'envoi d'emails sur OVH
+# À ajouter dans le .htaccess à la racine du site
+
+# Configuration PHP pour l'envoi d'emails
+php_value sendmail_from "noreply@coachtfe.fr"
+php_value mail.add_x_header "On"
+
+# Si le serveur le permet, définir le Return-Path
+php_value sendmail_path "/usr/sbin/sendmail -t -i -f noreply@coachtfe.fr"
