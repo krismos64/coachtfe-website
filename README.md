@@ -144,10 +144,17 @@ open http://localhost:8000
 
 ### Déploiement Production
 
+Le site est déployé sur OVH via FileZilla :
+
 ```bash
-# Upload des fichiers vers votre serveur web
-# Assurer la configuration HTTPS
-# Configurer les redirections si nécessaire
+# Hébergement : OVH
+# Méthode de déploiement : FTP via FileZilla
+# URL de production : https://coachtfe.fr
+
+# Processus de déploiement :
+# 1. Se connecter au serveur OVH via FileZilla
+# 2. Transférer les fichiers modifiés vers le répertoire web
+# 3. Vérifier le site en production sur https://coachtfe.fr
 ```
 
 ---

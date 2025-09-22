@@ -903,7 +903,7 @@
             <span class="modal-close" onclick="closeModal()">&times;</span>
             <h2>Réservez votre entretien gratuit</h2>
             <p>30 minutes avec un expert pour analyser vos besoins</p>
-            <form id="contactForm">
+            <form id="contactForm" action="sendmail.php" method="POST">
                 <div class="form-group">
                     <label>Nom et prénom *</label>
                     <input type="text" name="name" required>
@@ -1114,12 +1114,9 @@
                 <p>30 minutes avec un expert pour définir votre stratégie de réussite</p>
             </div>
             
-            <form id="entretienForm" class="entretien-form" name="entretien-gratuit" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci-entretien.html">
-                <!-- Honeypot anti-spam pour Netlify -->
-                <input type="hidden" name="form-name" value="entretien-gratuit">
-                <p class="hidden">
-                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                </p>
+            <form id="entretienForm" class="entretien-form" action="sendmail.php" method="POST">
+                <!-- Honeypot anti-spam simple -->
+                <input type="hidden" name="form-type" value="entretien">
                 
                 <div class="form-group-entretien">
                     <label for="fullName">Nom complet <span class="required">*</span></label>
