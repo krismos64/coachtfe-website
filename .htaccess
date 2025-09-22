@@ -1,11 +1,10 @@
 # Headers de sécurité pour améliorer les bonnes pratiques
 <IfModule mod_headers.c>
-    # Content Security Policy (CSP) - Protection XSS
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;"
+    # Content Security Policy (CSP) - Mode permissif pour éviter les blocages
+    Header set Content-Security-Policy "default-src 'self' http: https: data: 'unsafe-inline' 'unsafe-eval';"
 
-    # HTTP Strict Transport Security (HSTS) - Force HTTPS pendant 1 an
-    # À activer uniquement quand le SSL fonctionne correctement
-    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    # HSTS désactivé temporairement pour éviter les problèmes de certificat
+    # Header always set Strict-Transport-Security "max-age=86400"
 
     # Cross-Origin-Opener-Policy (COOP)
     Header set Cross-Origin-Opener-Policy "same-origin"
@@ -26,40 +25,45 @@
     Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
-# Cache Control Headers pour forcer le rechargement
+# Cache simple et compatible avec tous les navigateurs
 <IfModule mod_headers.c>
-    # Désactive le cache pour HTML (toujours frais)
+    # HTML toujours frais - pas de cache
     <FilesMatch "\.(html|htm)$">
         Header set Cache-Control "no-cache, no-store, must-revalidate"
         Header set Pragma "no-cache"
         Header set Expires "0"
     </FilesMatch>
 
-    # Cache court pour CSS et JS (1 heure) pendant la phase de correction
+    # CSS et JS - cache court de 1 heure
     <FilesMatch "\.(css|js)$">
-        Header set Cache-Control "max-age=3600, must-revalidate"
+        Header set Cache-Control "max-age=3600, public"
     </FilesMatch>
 
-    # Cache normal pour les images (30 jours)
+    # Images - cache de 7 jours
     <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
-        Header set Cache-Control "max-age=2592000, public"
+        Header set Cache-Control "max-age=604800, public"
     </FilesMatch>
 
-    # Cache pour les fonts (1 an)
+    # Fonts - cache de 30 jours
     <FilesMatch "\.(woff|woff2|ttf|eot)$">
-        Header set Cache-Control "max-age=31536000, public"
+        Header set Cache-Control "max-age=2592000, public"
     </FilesMatch>
 </IfModule>
 
-# Active la compression Gzip
+# Compression Gzip simple et universelle
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
 </IfModule>
 
-# Force HTTPS - DÉSACTIVÉ temporairement pour éviter les erreurs SSL
-# Décommentez ces lignes uniquement si le certificat SSL est correctement configuré
-# <IfModule mod_rewrite.c>
-#     RewriteEngine On
-#     RewriteCond %{HTTPS} off
-#     RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-# </IfModule>
+# Redirections simples - Compatible tous hébergeurs
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirection www vers non-www (unifie le domaine)
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+    # Redirection HTTP vers HTTPS (simple et universelle)
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
