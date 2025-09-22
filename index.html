@@ -938,13 +938,22 @@
 
         // Popup functionality
         function closePopup() {
-            document.getElementById('popup-cta').style.display = 'none';
+            const popup = document.getElementById('popup-cta');
+            if (popup) {
+                popup.classList.add('hidden');
+                popup.style.display = 'none';
+            }
         }
 
-        // Show popup after 30 seconds
+        // Show popup after 5 seconds
         setTimeout(function() {
-            document.getElementById('popup-cta').style.display = 'flex';
-        }, 30000);
+            const popup = document.getElementById('popup-cta');
+            if (popup) {
+                popup.classList.remove('hidden');
+                popup.style.display = 'flex';
+                console.log('Popup CTA affichée');
+            }
+        }, 5000);
 
         // FAQ Toggle
         function toggleFaq(element) {
