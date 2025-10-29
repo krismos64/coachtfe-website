@@ -157,6 +157,16 @@ Le site est déployé sur OVH via FileZilla :
 # 3. Vérifier le site en production sur https://coachtfe.fr
 ```
 
+### ⚠️ Notes importantes pour le déploiement OVH
+
+**Favicon** : Des fichiers favicon sont placés à la racine pour compatibilité OVH :
+
+- `favicon.ico` - Favicon principal
+- `favicon-16x16.png` - Version 16px
+- `favicon-32x32.png` - Version 32px
+
+Ces fichiers doivent être uploadés à la racine du serveur pour assurer l'affichage correct du favicon en production.
+
 ---
 
 ## 📱 Responsive Design
@@ -281,10 +291,13 @@ coachtfe-website/
 │   ├── logo-staka.png        # Logo partenaire
 │   ├── logo-trustpilot.png   # Logo avis clients
 │   ├── livre.png             # Image livre guide TFE
-│   └── favicon/              # Icônes site
-│       ├── favicon-32x32.png
-│       ├── favicon-16x16.png
-│       └── apple-touch-icon.png
+│   └── favicon/              # Icônes site originales
+│       ├── icons8-entraîneur--color-16.png
+│       ├── icons8-entraîneur--color-32.png
+│       └── icons8-entraîneur--color-96.png
+├── 🌐 favicon.ico            # Favicon racine (OVH)
+├── 🌐 favicon-16x16.png      # Favicon 16px (OVH)
+├── 🌐 favicon-32x32.png      # Favicon 32px (OVH)
 ├── 📖 README.md              # Documentation projet
 ├── 📁 docs/                  # Documentation technique
 ├── 📁 .claude/               # Configuration Claude
@@ -409,21 +422,11 @@ git push origin feature/nouvelle-fonctionnalite
 
 ## 📈 Roadmap
 
-### Version 1.1 (Q2 2025)
+### Version 1.0.1 (Décembre 2024)
 
-- [ ] **PWA** - Application web progressive
-- [ ] **Dark mode** - Thème sombre
-- [ ] **Animations avancées** - GSAP integration
-- [ ] **Micro-interactions** - UX améliorée
-
-### Version 1.2 (Q3 2025)
-
-- [ ] **CMS Integration** - Gestion contenu dynamique
-- [ ] **Multi-langues** - Support international
-- [ ] **Analytics** - Tracking avancé
-- [ ] **A/B Testing** - Optimisation conversion
-
----
+- [x] **Favicon** - Correction compatibilité OVH avec fichiers à la racine
+- [x] **SEO** - Optimisation des balises meta et chemins absolus
+- [x] **Documentation** - Mise à jour README avec notes de déploiement
 
 ## 📞 Contact
 
@@ -433,25 +436,5 @@ git push origin feature/nouvelle-fonctionnalite
 
 - 🌐 **Site Web :** [christophe-dev-freelance.fr](https://christophe-dev-freelance.fr)
 - 🐙 **GitHub :** [@krismos64](https://github.com/krismos64)
-
-### Client Final
-
-**CoachTFE.fr - Accompagnement TFE Infirmier**
-
-- 🌐 **Site :** [coachtfe.fr](https://coachtfe.fr)
-- 📧 **Contact :** contact@coachtfe.fr
-- 📱 **Téléphone :** 06 80 35 60 22
-- ⭐ **Avis :** [Trustpilot CoachTFE](https://fr.trustpilot.com/review/coachtfe.fr)
-
----
-
-<div align="center">
-
-**🇫🇷 Développé avec expertise et passion pour l'excellence éducative française**
-
-[![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://github.com/krismos64)
-[![Powered by Coffee](https://img.shields.io/badge/Powered%20by-☕-brown.svg)](#)
-
-**⭐ Si ce projet vous plaît, n'hésitez pas à lui donner une étoile !**
 
 </div>
