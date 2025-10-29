@@ -1,315 +1,385 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Merci pour votre message - CoachTFE.fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Merci pour votre message - CoachTFE.fr" />
     <title>Message envoyé avec succès - CoachTFE.fr</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon/favicon-16x16.png"
+    />
+    <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        :root {
-            --bleu-france: #002395;
-            --rouge-france: #ED2939;
-            --blanc: #FFFFFF;
-            --gris-clair: #f8f9fa;
-            --gris: #6c757d;
-            --noir: #212529;
-        }
+      :root {
+        --bleu-france: #002395;
+        --rouge-france: #ed2939;
+        --blanc: #ffffff;
+        --gris-clair: #f8f9fa;
+        --gris: #6c757d;
+        --noir: #212529;
+      }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
 
-        /* Cercles décoratifs animés */
-        .decoration-circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: float 20s infinite ease-in-out;
-        }
+      /* Cercles décoratifs animés */
+      .decoration-circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: float 20s infinite ease-in-out;
+      }
 
-        .circle-1 {
-            width: 300px;
-            height: 300px;
-            background: var(--blanc);
-            top: -150px;
-            left: -150px;
-            animation-delay: 0s;
-        }
+      .circle-1 {
+        width: 300px;
+        height: 300px;
+        background: var(--blanc);
+        top: -150px;
+        left: -150px;
+        animation-delay: 0s;
+      }
 
-        .circle-2 {
-            width: 200px;
-            height: 200px;
-            background: var(--rouge-france);
-            bottom: -100px;
-            right: -100px;
-            animation-delay: 5s;
-        }
+      .circle-2 {
+        width: 200px;
+        height: 200px;
+        background: var(--rouge-france);
+        bottom: -100px;
+        right: -100px;
+        animation-delay: 5s;
+      }
 
-        .circle-3 {
-            width: 150px;
-            height: 150px;
-            background: var(--bleu-france);
-            top: 50%;
-            right: 10%;
-            animation-delay: 10s;
-        }
+      .circle-3 {
+        width: 150px;
+        height: 150px;
+        background: var(--bleu-france);
+        top: 50%;
+        right: 10%;
+        animation-delay: 10s;
+      }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            25% {
-                transform: translate(30px, -30px) rotate(90deg);
-            }
-            50% {
-                transform: translate(-20px, 20px) rotate(180deg);
-            }
-            75% {
-                transform: translate(20px, -10px) rotate(270deg);
-            }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
         }
+        25% {
+          transform: translate(30px, -30px) rotate(90deg);
+        }
+        50% {
+          transform: translate(-20px, 20px) rotate(180deg);
+        }
+        75% {
+          transform: translate(20px, -10px) rotate(270deg);
+        }
+      }
 
+      .container {
+        background: var(--blanc);
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        animation: slideUp 0.6s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .success-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 30px;
+        position: relative;
+        animation: checkmark 0.5s ease-out 0.3s forwards;
+        opacity: 0;
+      }
+
+      @keyframes checkmark {
+        to {
+          opacity: 1;
+          transform: scale(1.1) rotate(360deg);
+        }
+      }
+
+      .success-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      h1 {
+        color: var(--noir);
+        font-size: 28px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        animation: fadeIn 0.6s ease-out 0.2s forwards;
+        opacity: 0;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .message {
+        color: var(--gris);
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        animation: fadeIn 0.6s ease-out 0.4s forwards;
+        opacity: 0;
+      }
+
+      .info-box {
+        background: var(--gris-clair);
+        border-left: 4px solid var(--bleu-france);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        text-align: left;
+        animation: fadeIn 0.6s ease-out 0.6s forwards;
+        opacity: 0;
+      }
+
+      .info-box h3 {
+        color: var(--bleu-france);
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .info-box p {
+        color: var(--gris);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .phone-number {
+        color: var(--bleu-france);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .phone-number:hover {
+        color: var(--rouge-france);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeIn 0.6s ease-out 0.8s forwards;
+        opacity: 0;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .btn-primary {
+        background: var(--bleu-france);
+        color: var(--blanc);
+      }
+
+      .btn-primary:hover {
+        background: #001b6d;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 35, 149, 0.3);
+      }
+
+      .btn-secondary {
+        background: var(--blanc);
+        color: var(--bleu-france);
+        border-color: var(--bleu-france);
+      }
+
+      .btn-secondary:hover {
+        background: var(--bleu-france);
+        color: var(--blanc);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 35, 149, 0.2);
+      }
+
+      /* Responsive */
+      @media (max-width: 576px) {
         .container {
-            background: var(--blanc);
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-            animation: slideUp 0.6s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 30px;
-            position: relative;
-            animation: checkmark 0.5s ease-out 0.3s forwards;
-            opacity: 0;
-        }
-
-        @keyframes checkmark {
-            to {
-                opacity: 1;
-                transform: scale(1.1) rotate(360deg);
-            }
-        }
-
-        .success-icon svg {
-            width: 100%;
-            height: 100%;
+          padding: 30px 20px;
         }
 
         h1 {
-            color: var(--noir);
-            font-size: 28px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            animation: fadeIn 0.6s ease-out 0.2s forwards;
-            opacity: 0;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+          font-size: 24px;
         }
 
         .message {
-            color: var(--gris);
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            animation: fadeIn 0.6s ease-out 0.4s forwards;
-            opacity: 0;
-        }
-
-        .info-box {
-            background: var(--gris-clair);
-            border-left: 4px solid var(--bleu-france);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            text-align: left;
-            animation: fadeIn 0.6s ease-out 0.6s forwards;
-            opacity: 0;
-        }
-
-        .info-box h3 {
-            color: var(--bleu-france);
-            font-size: 18px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .info-box p {
-            color: var(--gris);
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .phone-number {
-            color: var(--bleu-france);
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .phone-number:hover {
-            color: var(--rouge-france);
+          font-size: 14px;
         }
 
         .button-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeIn 0.6s ease-out 0.8s forwards;
-            opacity: 0;
+          flex-direction: column;
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 2px solid transparent;
+          width: 100%;
         }
 
-        .btn-primary {
-            background: var(--bleu-france);
-            color: var(--blanc);
+        .decoration-circle {
+          display: none;
         }
-
-        .btn-primary:hover {
-            background: #001b6d;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 35, 149, 0.3);
-        }
-
-        .btn-secondary {
-            background: var(--blanc);
-            color: var(--bleu-france);
-            border-color: var(--bleu-france);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bleu-france);
-            color: var(--blanc);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 35, 149, 0.2);
-        }
-
-        /* Responsive */
-        @media (max-width: 576px) {
-            .container {
-                padding: 30px 20px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .message {
-                font-size: 14px;
-            }
-
-            .button-group {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .decoration-circle {
-                display: none;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Cercles décoratifs -->
     <div class="decoration-circle circle-1"></div>
     <div class="decoration-circle circle-2"></div>
     <div class="decoration-circle circle-3"></div>
 
     <div class="container">
-        <!-- Icône de succès -->
-        <div class="success-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" fill="#E8F5E9"></circle>
-                <path d="M9 12l2 2 4-4" stroke-width="3"></path>
-            </svg>
-        </div>
+      <!-- Icône de succès -->
+      <div class="success-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#4CAF50"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" fill="#E8F5E9"></circle>
+          <path d="M9 12l2 2 4-4" stroke-width="3"></path>
+        </svg>
+      </div>
 
-        <h1>Merci ! 🎉</h1>
+      <h1>Merci ! 🎉</h1>
 
-        <p class="message">
-            Votre message a bien été envoyé.<br>
-            Nous vous répondrons dans les plus brefs délais.
+      <p class="message">
+        Votre message a bien été envoyé.<br />
+        Nous vous répondrons dans les plus brefs délais.
+      </p>
+
+      <div class="info-box">
+        <h3>Que va-t-il se passer maintenant ?</h3>
+        <p>
+          Un expert CoachTFE va analyser votre demande et vous recontacter sous
+          24h ouvrées pour organiser votre entretien gratuit de 30 minutes.<br /><br />
+          Pour toute urgence, vous pouvez nous joindre directement au
+          <a href="tel:0680356022" class="phone-number">06 80 35 60 22</a>.
         </p>
+      </div>
 
-        <div class="info-box">
-            <h3>Que va-t-il se passer maintenant ?</h3>
-            <p>
-                Un expert CoachTFE va analyser votre demande et vous recontacter sous 24h ouvrées pour organiser votre entretien gratuit de 30 minutes.<br><br>
-                Pour toute urgence, vous pouvez nous joindre directement au
-                <a href="tel:0680356022" class="phone-number">06 80 35 60 22</a>.
-            </p>
-        </div>
-
-        <div class="button-group">
-            <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
-        </div>
+      <div class="button-group">
+        <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
+      </div>
     </div>
 
     <script>
-        // Redirection automatique après 10 secondes
-        setTimeout(function() {
-            // Optionnel : décommenter pour activer la redirection automatique
-            // window.location.href = 'index.html';
-        }, 10000);
+      // Redirection automatique après 10 secondes
+      setTimeout(function () {
+        // Optionnel : décommenter pour activer la redirection automatique
+        // window.location.href = 'index.html';
+      }, 10000);
+
+      // Conversion Google Ads sur page de remerciement (si consentement marketing)
+      (function () {
+        try {
+          var prefsRaw = localStorage.getItem("cookieConsent");
+          var prefs = prefsRaw ? JSON.parse(prefsRaw) : null;
+          if (!prefs || !prefs.marketing) return; // respect du consentement
+
+          function ensureGtagConfigured(cb) {
+            if (typeof window.gtag === "function") {
+              // gtag déjà présent (si loaded ailleurs)
+              window.gtag("config", "AW-17687329764");
+              return cb && cb();
+            }
+            var s = document.createElement("script");
+            s.async = true;
+            s.src =
+              "https://www.googletagmanager.com/gtag/js?id=AW-17687329764";
+            s.onload = function () {
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = function () {
+                dataLayer.push(arguments);
+              };
+              gtag("js", new Date());
+              gtag("config", "AW-17687329764");
+              cb && cb();
+            };
+            document.head.appendChild(s);
+          }
+
+          // Déclenchement conversion (label optionnel)
+          var CONVERSION_LABEL = null; // TODO: fournir le label Ads (ex: 'abcDEF12345')
+          ensureGtagConfigured(function () {
+            if (CONVERSION_LABEL) {
+              window.gtag("event", "conversion", {
+                send_to: "AW-17687329764/" + CONVERSION_LABEL,
+                value: 0,
+                currency: "EUR",
+              });
+              console.log("[Ads] Conversion envoyée");
+            } else {
+              // À défaut de label, la simple config pageview Ads est active
+              console.log("[Ads] AW configuré (label conversion manquant)");
+            }
+          });
+        } catch (e) {
+          console.warn("[Ads] merci.html error", e);
+        }
+      })();
     </script>
-</body>
+  </body>
 </html>
