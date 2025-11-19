@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Claude Code
+.claude/
+CLAUDE.md
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Logs
+*.log
+
+# Environnement local
+.env
+.env.local
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Thumbnails
+Thumbs.db
