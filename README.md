@@ -280,7 +280,6 @@ coachtfe-website/
 ├── 🎨 styles.min.css         # Styles principaux
 ├── ⚡ script.js               # Animations et interactions
 ├── 📄 mentions-legales.html   # Page mentions légales
-├── 📄 CLAUDE.md              # Instructions IA locale
 ├── 📁 images/                 # Ressources visuelles
 │   ├── Expert1.jpg           # Bulle animation 1
 │   ├── EXPERT2.jpg           # Bulle animation 2
@@ -299,9 +298,6 @@ coachtfe-website/
 ├── 🌐 favicon-16x16.png      # Favicon 16px (OVH)
 ├── 🌐 favicon-32x32.png      # Favicon 32px (OVH)
 ├── 📖 README.md              # Documentation projet
-├── 📁 docs/                  # Documentation technique
-├── 📁 .claude/               # Configuration Claude
-│   └── settings.local.json   # Permissions locales
 └── 🔧 .gitignore             # Fichiers exclus Git
 ```
 
@@ -364,13 +360,6 @@ const SCREEN_CONFIGS = {
 
 ## 📖 Documentation
 
-### Fichiers de Documentation
-
-- [`/docs/TECH-STACK.md`](docs/TECH-STACK.md) - Stack technique détaillée
-- [`/docs/RESPONSIVE.md`](docs/RESPONSIVE.md) - Guide responsive design
-- [`/docs/ANIMATIONS.md`](docs/ANIMATIONS.md) - Documentation animations
-- [`/docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) - Guide de déploiement
-
 ### Commentaires Code
 
 - **CSS** : Commentaires en français pour chaque section
@@ -422,11 +411,12 @@ git push origin feature/nouvelle-fonctionnalite
 
 ## 📈 Roadmap
 
-### Version 1.0.1 (Décembre 2024)
+### Version 1.0.1 (Complété)
 
 - [x] **Favicon** - Correction compatibilité OVH avec fichiers à la racine
 - [x] **SEO** - Optimisation des balises meta et chemins absolus
 - [x] **Documentation** - Mise à jour README avec notes de déploiement
+- [x] **Git** - Ajout .gitignore et nettoyage du repository
 
 ## 📞 Contact
 
