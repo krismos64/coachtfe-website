@@ -108,17 +108,6 @@ JavaScript ES6 # Animations et interactions
 - **CSS Grid & Flexbox** - Layouts modernes
 - **Lazy Loading** - Chargement optimisé
 
-### Outils de Développement
-
-```bash
-Git             # Contrôle de version
-Claude Code     # IDE avec IA intégrée
-Chrome DevTools # Debug et performance
-Lighthouse      # Audit qualité
-```
-
----
-
 ## 🚀 Installation
 
 ### Prérequis
@@ -372,42 +361,6 @@ const SCREEN_CONFIGS = {
 - **HTML5** - Sémantique moderne
 - **CSS3** - Bonnes pratiques
 - **ES6+** - JavaScript moderne
-
----
-
-## 🤝 Contribution
-
-### Guidelines de Développement
-
-1. **Suivre** la méthodologie mobile-first
-2. **Tester** sur les 5 breakpoints
-3. **Commenter** en français
-4. **Valider** avec Lighthouse
-5. **Respecter** la structure modulaire
-
-### Workflow Git
-
-```bash
-# Créer une branche feature
-git checkout -b feature/nouvelle-fonctionnalite
-
-# Développer et tester
-# Commit avec messages explicites
-git commit -m "feat: ajout animation hover sur CTA principale"
-
-# Push et Pull Request
-git push origin feature/nouvelle-fonctionnalite
-```
-
-### Tests Requis
-
-- ✅ Validation HTML5
-- ✅ Test responsive (5 breakpoints)
-- ✅ Performance Lighthouse
-- ✅ Accessibilité WCAG
-- ✅ Cross-browser testing
-
----
 
 ## 📈 Roadmap
 
