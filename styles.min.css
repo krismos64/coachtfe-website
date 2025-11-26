@@ -277,60 +277,6 @@ nav {
   box-shadow: var(--shadow);
 }
 
-/* Lien Charte Intégrité - Style moderne accrocheur */
-.nav-charte {
-  background: linear-gradient(135deg, var(--bleu-france) 0%, #001a6e 100%);
-  color: var(--blanc) !important;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 35, 149, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.nav-charte::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.nav-charte:hover::before {
-  left: 100%;
-}
-
-.nav-charte::after {
-  display: none !important;
-}
-
-.nav-charte:hover {
-  background: linear-gradient(135deg, #001a6e 0%, var(--bleu-france) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 35, 149, 0.4);
-  color: var(--blanc) !important;
-}
-
-.charte-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  font-size: 0.7rem;
-  font-weight: bold;
-}
 
 /*
         =====================================================
@@ -2308,26 +2254,6 @@ footer {
     margin-top: 1rem;
   }
 
-  /* Charte Intégrité - Style mobile */
-  .nav-charte {
-    background: linear-gradient(135deg, var(--bleu-france) 0%, #001a6e 100%);
-    color: white !important;
-    padding: 0.75rem 1.25rem;
-    border-radius: 25px;
-    justify-content: center;
-    font-size: 0.95rem;
-    border-bottom: none !important;
-  }
-
-  .nav-charte:hover {
-    background: linear-gradient(135deg, #001a6e 0%, var(--bleu-france) 100%);
-  }
-
-  .charte-icon {
-    width: 20px;
-    height: 20px;
-    font-size: 0.75rem;
-  }
 }
 
 /* CTA Section */
