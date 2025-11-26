@@ -1452,6 +1452,20 @@ footer {
   color: var(--blanc);
 }
 
+/* Logo footer - ton sur ton */
+.footer-logo {
+  height: 120px;
+  width: auto;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.footer-logo:hover {
+  opacity: 1;
+}
+
 /* Modal */
 .modal {
   display: none;
