@@ -6,13 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BCKWKBVDN"></script>
+    <!-- Google Analytics - Chargé uniquement après consentement RGPD -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-9BCKWKBVDN');
+
+        // Fonction pour charger Google Analytics après consentement
+        function loadGoogleAnalytics() {
+            if (document.querySelector('script[src*="googletagmanager.com/gtag/js?id=G-9BCKWKBVDN"]')) return;
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-9BCKWKBVDN';
+            script.onload = function() {
+                gtag('js', new Date());
+                gtag('config', 'G-9BCKWKBVDN');
+                console.log('[RGPD] Google Analytics chargé après consentement');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Vérifier si consentement déjà donné au chargement
+        (function() {
+            var consent = localStorage.getItem('cookieConsent');
+            if (consent) {
+                var prefs = JSON.parse(consent);
+                if (prefs.analytics === true) {
+                    loadGoogleAnalytics();
+                }
+            }
+        })();
     </script>
 
     <!-- SEO Principal -->

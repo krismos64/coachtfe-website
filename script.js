@@ -201,8 +201,11 @@ function acceptCookies() {
   localStorage.setItem("cookieConsent", JSON.stringify(preferences));
   document.getElementById("cookieConsent").classList.remove("show");
 
-  // Initialize tracking scripts here if needed
-  console.log("All cookies accepted");
+  // Charger Google Analytics après consentement (RGPD)
+  if (typeof loadGoogleAnalytics === "function") {
+    loadGoogleAnalytics();
+  }
+  console.log("[RGPD] Tous les cookies acceptés");
   // Marketing consent → configurer Google Ads
   configureGoogleAds();
 }
@@ -255,17 +258,19 @@ function saveSettings(acceptAll = false) {
   document.getElementById("cookieConsent").classList.remove("show");
   document.getElementById("cookieSettings").classList.remove("show");
 
-  console.log("Cookie preferences saved:", preferences);
+  console.log("[RGPD] Préférences cookies enregistrées:", preferences);
 
-  // Initialize or remove tracking scripts based on preferences
+  // Charger Google Analytics si analytics accepté (RGPD)
   if (preferences.analytics) {
-    // Initialize analytics (Google Analytics, etc.)
-    console.log("Analytics cookies enabled");
+    if (typeof loadGoogleAnalytics === "function") {
+      loadGoogleAnalytics();
+    }
+    console.log("[RGPD] Cookies analytiques activés");
   }
 
   if (preferences.marketing) {
     // Initialize marketing cookies (Google Ads, Facebook Pixel, etc.)
-    console.log("Marketing cookies enabled");
+    console.log("[RGPD] Cookies marketing activés");
     configureGoogleAds();
   }
 }
