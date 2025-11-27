@@ -118,6 +118,21 @@ ServerTokens Prod
 
     # Politique de référent
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # ==========================================
+    # CONFORMITÉ RGPD
+    # ==========================================
+
+    # Politique des permissions - Désactive les fonctionnalités intrusives
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+
+    # Cookies sécurisés - Force HttpOnly, Secure et SameSite
+    Header always edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=Strict
+
+    # Cross-Origin policies pour la vie privée
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Cross-Origin-Embedder-Policy "unsafe-none"
+    Header always set Cross-Origin-Resource-Policy "same-site"
 </IfModule>
 
 # Protéger les fichiers sensibles
