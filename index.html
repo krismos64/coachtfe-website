@@ -6,35 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-    <!-- Google Analytics - Chargé uniquement après consentement RGPD -->
+    <!-- Consentmanager - Gestion du consentement RGPD (DOIT être en premier) -->
+    <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/012a0429f209b.js" data-cmp-host="a.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="0"></script>
+
+    <!-- Google Analytics - Bloqué automatiquement par Consentmanager jusqu'au consentement -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BCKWKBVDN"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-
-        // Fonction pour charger Google Analytics après consentement
-        function loadGoogleAnalytics() {
-            if (document.querySelector('script[src*="googletagmanager.com/gtag/js?id=G-9BCKWKBVDN"]')) return;
-            var script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-9BCKWKBVDN';
-            script.onload = function() {
-                gtag('js', new Date());
-                gtag('config', 'G-9BCKWKBVDN');
-                console.log('[RGPD] Google Analytics chargé après consentement');
-            };
-            document.head.appendChild(script);
-        }
-
-        // Vérifier si consentement déjà donné au chargement
-        (function() {
-            var consent = localStorage.getItem('cookieConsent');
-            if (consent) {
-                var prefs = JSON.parse(consent);
-                if (prefs.analytics === true) {
-                    loadGoogleAnalytics();
-                }
-            }
-        })();
+        gtag('js', new Date());
+        gtag('config', 'G-9BCKWKBVDN');
     </script>
 
     <!-- SEO Principal -->
@@ -1284,65 +1265,5 @@
         });
     </script>
     
-    <!-- Cookie Consent Popup -->
-    <div id="cookieConsent" class="cookie-consent">
-        <div class="cookie-content">
-            <div class="cookie-text">
-                <h3>🍪 Cookies</h3>
-                <p>Nous utilisons des cookies pour améliorer votre expérience.</p>
-            </div>
-            <div class="cookie-actions">
-                <button class="cookie-btn cookie-settings" onclick="openCookieSettings()">⚙️</button>
-                <button class="cookie-btn cookie-reject" onclick="rejectCookies()">✖</button>
-                <button class="cookie-btn cookie-accept" onclick="acceptCookies()">✓ Accepter</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cookie Settings Modal -->
-    <div id="cookieSettings" class="cookie-settings-modal">
-        <div class="cookie-settings-content">
-            <div class="cookie-settings-header">
-                <h2>Paramètres des cookies</h2>
-                <button class="close-settings" onclick="closeCookieSettings()">&times;</button>
-            </div>
-            <div class="cookie-settings-body">
-                <div class="cookie-category">
-                    <div class="category-header">
-                        <h3>Cookies essentiels</h3>
-                        <label class="toggle-switch disabled">
-                            <input type="checkbox" checked disabled>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <p>Ces cookies sont nécessaires au fonctionnement du site et ne peuvent pas être désactivés.</p>
-                </div>
-                <div class="cookie-category">
-                    <div class="category-header">
-                        <h3>Cookies analytiques</h3>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="analyticsCookies">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <p>Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site.</p>
-                </div>
-                <div class="cookie-category">
-                    <div class="category-header">
-                        <h3>Cookies marketing</h3>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="marketingCookies">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <p>Ces cookies sont utilisés pour personnaliser les publicités et le contenu en fonction de vos intérêts.</p>
-                </div>
-            </div>
-            <div class="cookie-settings-footer">
-                <button class="cookie-btn cookie-reject" onclick="saveSettings(false)">Refuser tout</button>
-                <button class="cookie-btn cookie-accept" onclick="saveSettings(true)">Enregistrer les préférences</button>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
