@@ -25,6 +25,7 @@
 - [📁 Structure du Projet](#-structure-du-projet)
 - [🔧 Configuration](#-configuration)
 - [📖 Documentation](#-documentation)
+- [🔒 Conformité RGPD](#-conformité-rgpd)
 - [🤝 Contribution](#-contribution)
 - [📞 Contact](#-contact)
 
@@ -361,6 +362,71 @@ const SCREEN_CONFIGS = {
 - **HTML5** - Sémantique moderne
 - **CSS3** - Bonnes pratiques
 - **ES6+** - JavaScript moderne
+
+---
+
+## 🔒 Conformité RGPD
+
+### Certification & Conformité
+
+Le site CoachTFE.fr respecte pleinement le **Règlement Général sur la Protection des Données (RGPD)** et la directive **ePrivacy** européenne.
+
+| Critère réglementaire | Statut | Détails |
+|----------------------|--------|---------|
+| Consentement préalable | ✅ Conforme | Aucun cookie non-essentiel avant consentement |
+| Option de refus | ✅ Conforme | Bouton "Refuser" visible et accessible |
+| Granularité du choix | ✅ Conforme | Paramétrage par catégorie de cookies |
+| Registre des consentements | ✅ Conforme | Stockage sécurisé des preuves |
+| Retrait du consentement | ✅ Conforme | Modification possible à tout moment |
+
+### Solution Technique Implémentée
+
+**Consentmanager CMP** (Consent Management Platform)
+
+```html
+<!-- Script CMP certifié - Chargé en premier dans le <head> -->
+<script type="text/javascript" data-cmp-ab="1"
+  src="https://cdn.consentmanager.net/delivery/autoblocking/012a0429f209b.js"
+  data-cmp-host="a.delivery.consentmanager.net"
+  data-cmp-cdn="cdn.consentmanager.net"
+  data-cmp-codesrc="0">
+</script>
+```
+
+### Fonctionnalités RGPD
+
+| Fonctionnalité | Description |
+|----------------|-------------|
+| **Autoblocking** | Bloque automatiquement tous les scripts tiers (Analytics, Trustpilot, etc.) jusqu'au consentement |
+| **TCF 2.2** | Certification IAB Transparency & Consent Framework v2.2 |
+| **Bannière personnalisable** | Interface adaptable aux couleurs du site |
+| **Multi-langues** | Support français natif |
+| **Preuve de consentement** | Enregistrement horodaté pour justification CNIL |
+
+### Scripts Gérés par la CMP
+
+Les scripts suivants sont **automatiquement bloqués** jusqu'au consentement utilisateur :
+
+- **Google Analytics** (G-9BCKWKBVDN) - Cookies analytiques
+- **Trustpilot** - Cookies tiers avis clients
+- Tout autre script tiers ajouté ultérieurement
+
+### Politique de Cookies
+
+| Catégorie | Finalité | Consentement requis |
+|-----------|----------|---------------------|
+| **Essentiels** | Fonctionnement du site | Non (légitimes) |
+| **Analytiques** | Mesure d'audience | Oui |
+| **Marketing** | Personnalisation contenu | Oui |
+
+### Mise à Jour : 27 Novembre 2025
+
+- ✅ Intégration Consentmanager CMP certifiée
+- ✅ Suppression de l'ancien système cookies maison
+- ✅ Google Analytics conditionné au consentement
+- ✅ Autoblocking activé pour tous les scripts tiers
+
+---
 
 ## 📈 Roadmap
 
