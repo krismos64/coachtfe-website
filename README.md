@@ -422,22 +422,32 @@ Les scripts suivants sont **automatiquement bloqués** jusqu'au consentement uti
 
 ### Configuration Serveur (.htaccess)
 
-Le fichier `.htaccess` inclut des headers de sécurité conformes RGPD :
+Le fichier `.htaccess` est optimisé pour **OVH mutualisé** et inclut des headers de sécurité conformes RGPD :
 
 ```apache
-# Headers RGPD
-Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
-Header always edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=Strict
-Header always set Cross-Origin-Opener-Policy "same-origin"
-Header always set Cross-Origin-Resource-Policy "same-site"
+# Headers RGPD compatibles OVH
+Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+Header always set Cross-Origin-Resource-Policy "cross-origin"
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 ```
 
 | Header | Protection |
 |--------|------------|
-| **Permissions-Policy** | Bloque géolocalisation, micro, caméra, capteurs |
-| **Set-Cookie** | Force HttpOnly, Secure, SameSite=Strict |
+| **Permissions-Policy** | Bloque géolocalisation, micro, caméra, paiement, USB |
 | **HSTS** | Force HTTPS pendant 1 an |
+| **X-Frame-Options** | Protection clickjacking |
+| **Content-Security-Policy** | Whitelist des domaines autorisés |
 | **Cross-Origin policies** | Isolation des ressources |
+
+### Fonctionnalités .htaccess
+
+- ✅ Compression GZIP
+- ✅ Mise en cache (images, CSS, JS, fonts)
+- ✅ Redirection HTTPS forcée
+- ✅ Redirection www vers non-www
+- ✅ Headers de sécurité OWASP
+- ✅ Headers RGPD
 
 ### Mise à Jour : 27 Novembre 2025
 
@@ -445,7 +455,7 @@ Header always set Cross-Origin-Resource-Policy "same-site"
 - ✅ Suppression de l'ancien système cookies maison
 - ✅ Google Analytics conditionné au consentement
 - ✅ Autoblocking activé pour tous les scripts tiers
-- ✅ Headers RGPD dans .htaccess (Permissions-Policy, cookies sécurisés)
+- ✅ Headers RGPD dans .htaccess compatible OVH mutualisé
 
 ---
 
