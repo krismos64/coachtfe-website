@@ -270,6 +270,7 @@ coachtfe-website/
 ├── 🎨 styles.min.css         # Styles principaux
 ├── ⚡ script.js               # Animations et interactions
 ├── 📄 mentions-legales.html   # Page mentions légales
+├── 🔧 .htaccess              # Config Apache (cache, GZIP, sécurité, RGPD)
 ├── 📁 images/                 # Ressources visuelles
 │   ├── Expert1.jpg           # Bulle animation 1
 │   ├── EXPERT2.jpg           # Bulle animation 2
@@ -419,12 +420,32 @@ Les scripts suivants sont **automatiquement bloqués** jusqu'au consentement uti
 | **Analytiques** | Mesure d'audience | Oui |
 | **Marketing** | Personnalisation contenu | Oui |
 
+### Configuration Serveur (.htaccess)
+
+Le fichier `.htaccess` inclut des headers de sécurité conformes RGPD :
+
+```apache
+# Headers RGPD
+Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+Header always edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=Strict
+Header always set Cross-Origin-Opener-Policy "same-origin"
+Header always set Cross-Origin-Resource-Policy "same-site"
+```
+
+| Header | Protection |
+|--------|------------|
+| **Permissions-Policy** | Bloque géolocalisation, micro, caméra, capteurs |
+| **Set-Cookie** | Force HttpOnly, Secure, SameSite=Strict |
+| **HSTS** | Force HTTPS pendant 1 an |
+| **Cross-Origin policies** | Isolation des ressources |
+
 ### Mise à Jour : 27 Novembre 2025
 
 - ✅ Intégration Consentmanager CMP certifiée
 - ✅ Suppression de l'ancien système cookies maison
 - ✅ Google Analytics conditionné au consentement
 - ✅ Autoblocking activé pour tous les scripts tiers
+- ✅ Headers RGPD dans .htaccess (Permissions-Policy, cookies sécurisés)
 
 ---
 
