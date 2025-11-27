@@ -1,4 +1,4 @@
-# .htaccess pour CoachDEC - Hébergement OVH
+# .htaccess pour CoachTFE - Hébergement OVH Mutualisé
 # Configuration Apache pour optimisation, sécurité et SEO
 
 # ==========================================
@@ -10,7 +10,7 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Rediriger www vers non-www (optionnel - choisir selon préférence)
+# Rediriger www vers non-www
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
@@ -27,7 +27,6 @@ ErrorDocument 500 /index.html
 # ==========================================
 
 <IfModule mod_deflate.c>
-    # Compression des fichiers texte
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
     AddOutputFilterByType DEFLATE text/xml
@@ -92,10 +91,6 @@ ErrorDocument 500 /index.html
 # SÉCURITÉ
 # ==========================================
 
-# Masquer la version d'Apache
-ServerTokens Prod
-
-# Désactiver la signature du serveur
 <IfModule mod_headers.c>
     Header unset Server
     Header always unset X-Powered-By
@@ -105,16 +100,16 @@ ServerTokens Prod
     Header always set X-XSS-Protection "1; mode=block"
 
     # Empêcher le MIME type sniffing
-    Header always set X-Content-Type-Options nosniff
+    Header always set X-Content-Type-Options "nosniff"
 
     # Protection contre le clickjacking
-    Header always set X-Frame-Options DENY
+    Header always set X-Frame-Options "DENY"
 
     # Politique de sécurité du contenu
-    Header always set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://wa.me https://api.emailjs.com https://fr.trustpilot.com https://staka.fr https://fnac.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com https://wa.me;"
+    Header always set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.consentmanager.net https://a.delivery.consentmanager.net https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://wa.me https://api.emailjs.com https://fr.trustpilot.com https://staka.fr https://fnac.com https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com https://wa.me https://www.google-analytics.com https://cdn.consentmanager.net; frame-src https://cdn.consentmanager.net;"
 
     # HSTS (HTTP Strict Transport Security)
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
     # Politique de référent
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
@@ -124,74 +119,21 @@ ServerTokens Prod
     # ==========================================
 
     # Politique des permissions - Désactive les fonctionnalités intrusives
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
-
-    # Cookies sécurisés - Force HttpOnly, Secure et SameSite
-    Header always edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=Strict
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
 
     # Cross-Origin policies pour la vie privée
-    Header always set Cross-Origin-Opener-Policy "same-origin"
-    Header always set Cross-Origin-Embedder-Policy "unsafe-none"
-    Header always set Cross-Origin-Resource-Policy "same-site"
+    Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+    Header always set Cross-Origin-Resource-Policy "cross-origin"
 </IfModule>
-
-# Protéger les fichiers sensibles
-<FilesMatch "^\.">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
-
-# Bloquer l'accès aux fichiers de configuration
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
 
 # ==========================================
 # OPTIMISATIONS SEO
 # ==========================================
 
-# Trailing slash redirect
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !/$
-RewriteRule . %{REQUEST_URI}/ [R=301,L]
-
 # Redirection pour les URLs sans extension vers index.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^.]+)$ /index.html [L]
-
-# ==========================================
-# PROTECTION CONTRE LES BOTS MALVEILLANTS
-# ==========================================
-
-# Bloquer les user agents suspects
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
-    RewriteCond %{HTTP_USER_AGENT} ^(-|\.|') [OR]
-    RewriteCond %{HTTP_USER_AGENT} ^(.*)(?:BENTLEY|NIK|KMCCREW|BAIDU)(.*) [NC,OR]
-    RewriteCond %{HTTP_USER_AGENT} ^(.*)(?:harvest|extract|parser|scanner)(.*) [NC,OR]
-    RewriteCond %{HTTP_USER_AGENT} ^(.*)(?:email|mail)(.*) [NC]
-    RewriteRule .* - [F,L]
-</IfModule>
-
-# Limiter les tentatives de requêtes
-<IfModule mod_evasive.c>
-    DOSHashTableSize    2048
-    DOSPageCount        20
-    DOSSiteCount        50
-    DOSPageInterval     1
-    DOSSiteInterval     1
-    DOSBlockingPeriod   600
-</IfModule>
-
-# ==========================================
-# REDIRECTIONS SPÉCIFIQUES (si nécessaire)
-# ==========================================
-
-# Exemple de redirection d'anciennes URLs (à personnaliser)
-# Redirect 301 /old-page.html /
-# Redirect 301 /contact-old.html /#contact
 
 # ==========================================
 # TYPES MIME
@@ -202,7 +144,6 @@ RewriteRule ^([^.]+)$ /index.html [L]
     AddType application/font-woff2 .woff2
     AddType image/svg+xml .svg
     AddType application/json .json
-    AddType text/cache-manifest .appcache
 </IfModule>
 
 # ==========================================
@@ -214,23 +155,6 @@ Options -Indexes
 
 # Suivre les liens symboliques
 Options +FollowSymLinks
-
-# Désactiver les includes server-side
-Options -Includes
-
-# Empêcher l'exécution de PHP dans les uploads (sécurité)
-<FilesMatch "\.php$">
-    Order Deny,Allow
-    Deny from All
-</FilesMatch>
-
-# Optimisation des performances
-<IfModule mod_setenvif.c>
-    # Désactiver les ETags pour les fichiers statiques
-    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|pdf)$">
-        FileETag None
-    </FilesMatch>
-</IfModule>
 
 # ==========================================
 # FIN DE CONFIGURATION
