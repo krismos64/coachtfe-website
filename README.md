@@ -468,6 +468,58 @@ Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains
 - [x] **Documentation** - Mise à jour README avec notes de déploiement
 - [x] **Git** - Ajout .gitignore et nettoyage du repository
 
+### Version 1.0.2 (En cours) - Anti-plagiat Google Ads
+
+**Contexte** : Modifications demandées suite à problème de plagiat détecté par Google Ads.
+
+#### Modifications de contenu
+
+| Élément actuel | Nouveau texte |
+|----------------|---------------|
+| `Analyses des Résultats` | `Accompagnement dans le traitement de vos résultats` |
+| `Finalisation du TFE` | `Relecture de votre TFE avec recommandations` |
+
+#### Modifications SEO / Meta tags
+
+- [ ] **Title** : `Accompagnement Méthodologique TFE Infirmier | Guidance & Anti-Plagiat`
+- [ ] **Meta description** : `Accompagnement méthodologique pour votre TFE infirmier. Guidance par des formateurs experts, outils anti-plagiat et méthodologie validée.`
+- [ ] **Keywords** : `accompagnement TFE infirmier, méthodologie TFE, guidance mémoire infirmier, anti-plagiat TFE, coaching méthodologique IFSI`
+- [ ] **Open Graph title** : `CoachTFE - Accompagnement Méthodologique TFE Infirmier`
+- [ ] **Open Graph description** : `Des formateurs experts vous guident dans la méthodologie de VOTRE TFE. Accompagnement personnalisé avec contrôle anti-plagiat systématique.`
+
+#### Schema.org à ajouter
+
+- [ ] **EducationalOrganization** : Nouveau schema JSON-LD avec serviceType, teaches et educationalCredentialAwarded
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "CoachTFE.fr",
+  "description": "Accompagnement méthodologique pour TFE infirmier avec contrôle anti-plagiat systématique",
+  "url": "https://coachtfe.fr",
+  "serviceType": [
+    "Accompagnement méthodologique TFE",
+    "Guidance recherche infirmière",
+    "Coaching anti-plagiat"
+  ],
+  "areaServed": "FR",
+  "educationalCredentialAwarded": "TFE Infirmier",
+  "teaches": [
+    "Méthodologie de recherche infirmière",
+    "Analyse qualitative et quantitative",
+    "Normes de citation académique",
+    "Prévention du plagiat"
+  ]
+}
+```
+
+#### Fichiers impactés
+
+- `index.html` : Lignes 22-45 (meta tags), Ligne 317 (Analyses), Ligne 324 (Finalisation), Schema.org
+
+---
+
 ## 📞 Contact
 
 ### Développeur Principal
